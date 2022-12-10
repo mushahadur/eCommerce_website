@@ -32,7 +32,7 @@
                                     pages
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="{{route('login')}}"> login</a>
+                                    <a class="dropdown-item" href="{{route('login-register')}}"> login</a>
                                     <a class="dropdown-item" href="{{route('tracking')}}">tracking</a>
                                     <a class="dropdown-item" href="{{route('checkout')}}">product checkout</a>
                                     <a class="dropdown-item" href="{{route('cart')}}">shopping cart</a>
