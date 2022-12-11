@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,19 +12,22 @@ class CategoryController extends Controller
         return view('admin.category.add-category');
     }
     public function createCategory(Request $request){
-        return redirect()->back()->with('message' ,'Create Category Successfully !' );
+        Category::newCategory($request);
+        return redirect('/add-category')->with('message', 'Category info save successfully');
     }
 
     public function manageCategory(){
-        return view('admin.category.manage-category');
+        return view('admin.category.manage-category', ['categories' => Category::all()]);
     }
     public function updateCategory(Request $request, $id){
-        return redirect('/update-category')->back()->with('message' ,'Update Category Successfully !' );
+        Category::updateCategory($request, $id);
+        return redirect('/manage-category')->with('message', 'Category info update successfully');
     }
     public function editCategory($id){
-        return view('admin.category.edit-category');
+        return view('admin.category.edit-category', ['category' => Category::find($id)]);
     }
     public function deleteCategory($id){
-        return redirect()->back()->with('message' ,'Delete Category Successfully !' );
+        Category::deleteCategory($id);
+        return redirect('/manage-category')->with('message', 'Category info delete successfully');
     }
 }
