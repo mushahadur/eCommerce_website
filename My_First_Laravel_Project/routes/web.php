@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\BlogController;
@@ -44,11 +45,21 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
+    //Category Routes
     Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('addCategory');
     Route::post('/add-category', [CategoryController::class, 'createCategory'])->name('createCategory');
     Route::get('/manage-category', [CategoryController::class, 'manageCategory'])->name('manageCategory');
     Route::get('/edit-category/{id}', [CategoryController::class, 'editCategory'])->name('editCategory');
     Route::post('/update-category/{id}', [CategoryController::class, 'updateCategory'])->name('updateCategory');
     Route::get('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('deleteCategory');
+
+
+    //subCategory Routes
+    Route::get('/add-subCategory', [SubCategoryController::class, 'addSubCategory'])->name('addSubCategory');
+    Route::post('/add-subCategory', [SubCategoryController::class, 'createSubCategory'])->name('createSubCategory');
+    Route::get('/manage-subCategory', [SubCategoryController::class, 'manageSubCategory'])->name('manageSubCategory');
+    Route::get('/edit-subCategory/{id}', [SubCategoryController::class, 'editSubCategory'])->name('editSubCategory');
+    Route::post('/update-subCategory/{id}', [SubCategoryController::class, 'updateSubCategory'])->name('updateSubCategory');
+    Route::get('/delete-subCategory/{id}', [SubCategoryController::class, 'deleteSubCategory'])->name('deleteSubCategory');
 
 });
