@@ -10,7 +10,7 @@ class SubCategory extends Model
     use HasFactory;
     protected $fillable = ['name', 'description', 'status', 'image'];
 
-    private static $category, $image, $imageUrl, $imageName, $extension, $directory;
+    private static $subCategory, $image, $imageUrl, $imageName, $extension, $directory;
 
     public static function getImageUrl($request)
     {
@@ -22,45 +22,49 @@ class SubCategory extends Model
         return self::$directory.self::$imageName;
     }
 
-    public static function newCategory($request)
+    public static function newSubCategory($request)
     {
-        self::$category = new Category();
-        self::$category->name        = $request->name;
-        self::$category->description = $request->description;
-        self::$category->image       = self::getImageUrl($request);
-        self::$category->status      = $request->status;
-        self::$category->save();
+        self::$subCategory = new SubCategory();
+        self::$subCategory->category_id        = $request->category_id;
+        self::$subCategory->name        = $request->name;
+        self::$subCategory->description = $request->description;
+        self::$subCategory->image       = self::getImageUrl($request);
+        self::$subCategory->status      = $request->status;
+        self::$subCategory->save();
     }
 
-    public static function updateCategory($request, $id)
+    public static function updateSubCategory($request, $id)
     {
-        self::$category = Category::find($id);
+        self::$subCategory = SubCategory::find($id);
         if ($request->file('image'))
         {
-            if (file_exists(self::$category->image))
+            if (file_exists(self::$subCategory->image))
             {
-                unlink(self::$category->image);
+                unlink(self::$subCategory->image);
             }
             self::$imageUrl = self::getImageUrl($request);
         }
         else
         {
-            self::$imageUrl = self::$category->image;
+            self::$imageUrl = self::$subCategory->image;
         }
-        self::$category->name        = $request->name;
-        self::$category->description = $request->description;
-        self::$category->image       = self::$imageUrl;
-        self::$category->status      = $request->status;
-        self::$category->save();
+        self::$subCategory->name        = $request->name;
+        self::$subCategory->description = $request->description;
+        self::$subCategory->image       = self::$imageUrl;
+        self::$subCategory->status      = $request->status;
+        self::$subCategory->save();
     }
-
-    public static function deleteCategory($id)
+    public function category()
     {
-        self::$category = Category::find($id);
-        if (file_exists(self::$category->image))
+        return $this->belongsTo(Category::class);
+    }
+    public static function deleteSubCategory($id)
+    {
+        self::$subCategory = SubCategory::find($id);
+        if (file_exists(self::$subCategory->image))
         {
-            unlink(self::$category->image);
+            unlink(self::$subCategory->image);
         }
-        self::$category->delete();
+        self::$subCategory->delete();
     }
 }

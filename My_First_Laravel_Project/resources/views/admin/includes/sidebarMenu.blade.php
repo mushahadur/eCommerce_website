@@ -34,8 +34,8 @@
                 <span>Sub Category</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="layouts-horizontal.html">Store</a></li>
-                <li><a href="layouts-light-sidebar.html">Manage Sub Category</a></li>
+                <li><a href="{{route('addSubCategory')}}">Store</a></li>
+                <li><a href="{{route('manageSubCategory')}}">Manage Sub Category</a></li>
             </ul>
         </li>
 
@@ -45,8 +45,8 @@
                 <span>Brand</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="layouts-horizontal.html">Store</a></li>
-                <li><a href="layouts-light-sidebar.html">Manage Brand</a></li>
+                <li><a href="{{route('addBrand')}}">Create Brand</a></li>
+                <li><a href="{{route('manageBrand')}}">Manage Brand</a></li>
             </ul>
         </li>
 
@@ -56,8 +56,8 @@
                 <span>Unit</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="layouts-horizontal.html">Store</a></li>
-                <li><a href="layouts-light-sidebar.html">Manage Unit</a></li>
+                <li><a href="{{route('addUnit')}}">Create Unit</a></li>
+                <li><a href="{{route('manageUnit')}}">Manage Unit</a></li>
             </ul>
         </li>
 
@@ -67,8 +67,8 @@
                 <span>Product</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="layouts-horizontal.html">Store</a></li>
-                <li><a href="layouts-light-sidebar.html">Manage Product</a></li>
+                <li><a href="{{route('addProduct')}}">Create Product</a></li>
+                <li><a href="{{route('manageProduct')}}">Manage Product</a></li>
             </ul>
         </li>
 
