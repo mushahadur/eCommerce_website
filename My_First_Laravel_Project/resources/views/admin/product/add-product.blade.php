@@ -6,7 +6,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 mx-auto">
+                <div class="col-md-10 mx-auto">
                     <div class="card">
                         <div class="card-header">
                             <h1 class="text-center">Add Product</h1>
@@ -74,17 +74,31 @@
                                         <textarea name="short_description" class="form-control" id="" cols="30" rows="3"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mb-4">
                                     <label class="col-form-label col-md-4">Long Description</label>
                                     <div class="col-md-8">
                                         <textarea name="long_description" class="form-control" id="" cols="30" rows="3"></textarea>
                                     </div>
                                 </div>
-
+                                <div class="row form-group mb-4">
+                                    <label class="col-form-label col-md-4 ">Price</label>
+                                    <div class="col-md-8">
+                                        <div class="row form-group">
+                                            <div class="col-md-6">
+                                                <label class="">Regular Price</label>
+                                                <input type="text" class="form-control" name="regular_price">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="">Selling Price</label>
+                                                <input type="text" class="form-control" name="selling_price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4">Product Status</label>
                                     <div class="col-md-8">
-                                        <label for=""><input type="radio" name="status" value="1">Published</label>
+                                        <label for=""><input type="radio"  name="status" value="1">Published</label>
                                         <label for=""><input  type="radio" name="status" value="0">Unpublished</label>
                                     </div>
                                 </div>
@@ -103,7 +117,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-5"></label>
                                     <div class="col-md-8">
-                                        <input type="submit" name="btn" class="btn btn-outline-success " value="Add New Product" />
+                                        <input type="submit" name="btn" class="btn btn-outline-primary " value="Add New Product" />
                                     </div>
                                 </div>
                             </form>
