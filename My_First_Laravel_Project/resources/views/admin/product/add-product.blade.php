@@ -24,7 +24,7 @@
                                 <div class="form-group row mb-4">
                                     <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Select Category Name</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" id="categoryId">
                                             <option disabled> -- Select a Category -- </option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}"> {{$category->name}} </option>
@@ -130,5 +130,39 @@
     </section>
 
 @endsection
+
+@section('admin-js')
+    <script>
+        $(document).on('change', '#categoryId', function () {
+
+        var categoryId = $(this).val();
+            $.ajax({
+                url:"/get-sub-category-by-category-id"+categoryId,
+                method: 'GET',
+                dataType: 'JSON',
+                data: {},
+                success: function (res) {
+                    var option = '';
+                    option += '<option value="" disabled Selected>Select a sub category</option>';
+                    $.each(res, function (key, value) {
+                        option += 'option value "'+value.id+'">'+value.name+'</option>';
+                    })
+                    $('#subCategoryId').empty().append(option);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            })
+        })
+    </script>
+
+    @endsection
+
+
+
+
+
+
+
 
 

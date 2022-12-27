@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $subCategories;
+
     public function addProduct(){
         return view('admin.product.add-product', [
             'categories' => Category::all(),
@@ -20,6 +22,12 @@ class ProductController extends Controller
             'units' => Unit::all()
         ]);
     }
+
+    public function geSubCategoryId($id){
+        $this->subCategories = SubCategory::where('category_id', $id)->get();
+        return json_decode($this->subCategories);
+    }
+
     public function createProduct(Request $request){
         Product::newProduct($request);
         return redirect('/add-product')->with('message', 'Product info save successfully');

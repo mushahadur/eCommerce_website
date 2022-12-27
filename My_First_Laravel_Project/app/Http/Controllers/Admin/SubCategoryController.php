@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
+    private $subCategories;
+
     public function addSubCategory(){
         return view('admin.subCategory.add-subCategory', ['categories' => Category::all()]);
     }
@@ -18,7 +20,8 @@ class SubCategoryController extends Controller
     }
 
     public function manageSubCategory(){
-        return view('admin.subCategory.manage-subCategory', ['subCategories' => SubCategory::all()]);
+        $this->subCategories = SubCategory::orderBy('id', 'DESC')->get();
+        return view('admin.subCategory.manage-subCategory', ['subCategories' => $this->subCategories]);
     }
     public function updateSubCategory(Request $request, $id){
         SubCategory::updateSubCategory($request, $id);

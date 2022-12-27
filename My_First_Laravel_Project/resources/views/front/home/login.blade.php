@@ -43,6 +43,7 @@
                             <h3>Welcome Back ! <br>
                                 Please Sign in now</h3>
                             <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                                @csrf
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value=""
                                            placeholder="Username">

@@ -36,7 +36,7 @@ class Category extends Model
     public static function updateCategory($request, $id)
     {
         self::$category = Category::find($id);
-        if ($request->file('image'))
+        if ($request->hasFile('image'))
         {
             if (file_exists(self::$category->image))
             {

@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->integer('hit_count')->default(0);
             $table->integer('sells_count')->default(0);
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
